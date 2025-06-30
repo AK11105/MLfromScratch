@@ -1,0 +1,60 @@
+venv/
+# === Python Standard ===
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+.eggs/
+*.manifest
+*.spec
+
+# === Jupyter Notebooks ===
+.ipynb_checkpoints
+
+# === VS Code ===
+.vscode/
+
+# === OS files ===
+.DS_Store
+Thumbs.db
+
+# === ML/DL Specific ===
+# Checkpoints and weights
+*.ckpt
+*.h5
+*.pth
+*.pt
+*.t7
+*.weights
+
+# Datasets and large files
+data/
+datasets/
+*.zip
+*.tar.gz
+*.npz
+*.npy
+*.csv
+
+# Experiment outputs
+runs/
+outputs/
+results/
+models/
+checkpoints/
+
+# === Environment & Dependency Files ===
+*.env
+.env.*
+*.pickle
+*.joblib
