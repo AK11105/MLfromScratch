@@ -11,6 +11,9 @@ class LinearRegression:
         self.singular_ = None
         
     def fit(self, X, y):
+        X = np.asarray(X)
+        y = np.asarray(y)
+
         self.n_features_in_ = X.shape[1]
         self.rank_ = np.linalg.matrix_rank(X)
         self.singular_ = np.linalg.svdvals(X)
@@ -20,16 +23,18 @@ class LinearRegression:
             y_mean = np.mean(y)
             X_centred = X - X_mean
             y_centred = y - y_mean
-            self.coeff_ = np.linalg.pinv(X_centred.T@X_centred)@X_centred.T@y_centred
-            self.intercept_ = y_mean - X_mean@self.coeff_
+            self.coeff_ = np.linalg.pinv(X_centred.T @ X_centred) @ X_centred.T @ y_centred
+            self.intercept_ = y_mean - X_mean @ self.coeff_
         else:
-            self.coeff_ = np.linalg.pinv((X.T)@X)@(X.T)@y
+            self.coeff_ = np.linalg.pinv(X.T @ X) @ X.T @ y
         
     def predict(self, X_test):
+        X_test = np.asarray(X_test)
         return X_test @ self.coeff_
+
         
     def score(self, y_pred, y_test):
         mse = np.mean((y_pred - y_test)**2)
         rmse = np.sqrt(mse)
-        print("The root mean square error is : ", rmse)
+        return rmse
         
