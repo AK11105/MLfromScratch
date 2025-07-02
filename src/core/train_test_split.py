@@ -1,28 +1,35 @@
 import numpy as np 
 import pandas as pd
 
-def train_test_split(X, y, test_size, shuffle, stratify, random_state):
+def train_test_split(X, y, test_size, shuffle=True, stratify=False, random_state=None):
     np.random.seed(random_state)
+
+    is_pandas = isinstance(X, pd.DataFrame) or isinstance(X, pd.Series)
+
+    n_samples = len(y)
+    indices = np.arange(n_samples)
+
     if stratify:
         classes, vals = np.unique(y, return_inverse=True)
         final_train_indices = []
         final_test_indices = []
-        all_indices = np.arange(len(y))
-        for cls in classes:
-            indices = all_indices[vals == cls]
+        for cls in np.unique(vals):
+            cls_indices = indices[vals == cls]
             if shuffle:
-                np.random.shuffle(indices)
-            test_set_size = max(1, int(round(len(indices) * test_size)))
-            test_indices = indices[:test_set_size]
-            train_indices = indices[test_set_size:]
-            final_train_indices.extend(train_indices)
-            final_test_indices.extend(test_indices)
-        return X.iloc[final_train_indices], X.iloc[final_test_indices], y.iloc[final_train_indices], y.iloc[final_test_indices]
+                np.random.shuffle(cls_indices)
+            test_count = max(1, int(round(len(cls_indices) * test_size)))
+            final_test_indices.extend(cls_indices[:test_count])
+            final_train_indices.extend(cls_indices[test_count:])
+        train_indices = np.array(final_train_indices)
+        test_indices = np.array(final_test_indices)
     else:
-        test_set_size = int(X.shape[0] * test_size)
-        indices = np.arange(X.shape[0])
         if shuffle:
             np.random.shuffle(indices)
-        test_indices = indices[:test_set_size]
-        train_indices = indices[test_set_size:]
+        test_count = int(n_samples * test_size)
+        test_indices = indices[:test_count]
+        train_indices = indices[test_count:]
+
+    if is_pandas:
         return X.iloc[train_indices], X.iloc[test_indices], y.iloc[train_indices], y.iloc[test_indices]
+    else:
+        return X[train_indices], X[test_indices], y[train_indices], y[test_indices]

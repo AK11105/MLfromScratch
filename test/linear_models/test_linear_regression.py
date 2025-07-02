@@ -27,7 +27,7 @@ y_pred = linreg.predict(X_test)
 
 r2 = linreg.score(y_pred, y_test)
 
-print("R2 score on benchmark Boston Dataset : ", r2)
+print("RMSE score on benchmark Boston Dataset : ", r2)
 
 coeff = linreg.coeff_
 rank = linreg.rank_
