@@ -4,7 +4,7 @@ import numpy as np
 
 from src.core.train_test_split import train_test_split
 from src.core.scalers.StandardScaler import StandardScaler
-from src.ML.linear_models.MiniBatchStochasticGradientDescent import MiniBatchStochasticGradientDescent
+from src.ML.neighbors import KNNRegressor
 
 # --- Path Resolution ---
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
@@ -29,11 +29,9 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-mbsgd = MiniBatchStochasticGradientDescent(fit_intercept=True)
+mbsgd = KNNRegressor()
 mbsgd.fit(X_train_scaled, y_train)
 y_pred = mbsgd.predict(X_test_scaled)
 r2 = mbsgd.score(y_pred, y_test)
 
-print("RMSE score on benchmark Boston Dataset:", r2)
-print("Coefficients:", mbsgd.coeff_)
-print("Intercept:", mbsgd.intercept_)
+print("R2 score on benchmark Boston Dataset:", r2)
