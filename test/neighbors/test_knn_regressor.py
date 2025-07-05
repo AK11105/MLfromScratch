@@ -29,9 +29,9 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-mbsgd = KNNRegressor()
-mbsgd.fit(X_train_scaled, y_train)
-y_pred = mbsgd.predict(X_test_scaled)
-r2 = mbsgd.score(y_pred, y_test)
+knnr = KNNRegressor(weights='distance')
+knnr.fit(X_train_scaled, y_train)
+y_pred = knnr.predict(X_test_scaled)
+r2 = knnr.score(y_pred, y_test)
 
 print("R2 score on benchmark Boston Dataset:", r2)
