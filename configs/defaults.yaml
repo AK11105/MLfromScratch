@@ -1,0 +1,59 @@
+# General Configuration
+random_state: 42
+test_size: 0.2
+shuffle: true
+stratify: false
+
+# Standard Scaler
+scaler:
+  enabled: true
+
+# Linear Regression
+linear_regression:
+  fit_intercept: true
+
+# Batch Gradient Descent
+batch_gradient_descent:
+  alpha: 0.01
+  max_iter: 1000
+  tol: 1e-3
+  early_stopping: true
+  n_iter_no_change: 5
+  validation_fraction: 0.1
+  shuffle: true
+  fit_intercept: true
+
+# Stochastic Gradient Descent
+stochastic_gradient_descent:
+  alpha: 0.001
+  max_iter: 1000
+  tol: 1e-3
+  early_stopping: true
+  n_iter_no_change: 5
+  validation_fraction: 0.1
+  shuffle: true
+  fit_intercept: true
+  average: true
+
+# Mini-Batch SGD
+mini_batch_sgd:
+  alpha: 0.001
+  max_iter: 1000
+  tol: 1e-3
+  batch_size: 32
+  early_stopping: true
+  n_iter_no_change: 5
+  validation_fraction: 0.1
+  shuffle: true
+  fit_intercept: true
+  average: true
+
+# KNN Classifier
+knn_classifier:
+  n_neighbors: 5
+  weights: "uniform"
+
+# KNN Regressor
+knn_regressor:
+  n_neighbors: 5
+  weights: "uniform"
