@@ -57,3 +57,11 @@ knn_classifier:
 knn_regressor:
   n_neighbors: 5
   weights: "uniform"
+
+#RNN Classifier
+rnn_classifier:
+  radius: 1.0
+
+#RNN Regressor
+rnn_regressor:
+  radius: 1.0
