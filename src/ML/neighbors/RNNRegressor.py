@@ -1,9 +1,10 @@
+import pandas as pd 
 import numpy as np 
-import pandas as pd
 
 class RNNRegressor:
-    def __init__(self, radius=1.0):
+    def __init__(self, radius=1.0, weights='uniform'):
         self.radius = radius
+        self.weights=weights
         self.X = None
         self.y = None
 
@@ -26,7 +27,16 @@ class RNNRegressor:
 
             if indices:
                 neighbors = [self.y[i] for i in indices]
-                pred = np.mean(neighbors)
+                if self.weights == 'distance':
+                    if 0.0 in neighbor_distances:
+                        pred = self.y[indices[neighbor_distances.index(0.0)]]
+                    else:
+                        weights = [1/(d+1e-5) for d in neighbor_distances]
+                        weighted_sum = np.dot(weights, neighbors)
+                        weights_total = np.sum(weights)
+                        pred = weighted_sum /  weights_total
+                else:
+                    pred = np.mean(neighbors)
             else:
                 # No neighbors found; fallback to global mean
                 pred = np.mean(self.y)

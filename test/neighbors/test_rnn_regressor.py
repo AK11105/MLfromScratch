@@ -29,7 +29,7 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-rnnr = RNNRegressor(radius=5.0)
+rnnr = RNNRegressor(radius=7.0, weights='distance')
 rnnr.fit(X_train_scaled, y_train)
 y_pred = rnnr.predict(X_test_scaled)
 r2 = rnnr.score(y_pred, y_test)
