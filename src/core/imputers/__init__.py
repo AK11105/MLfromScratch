@@ -1,3 +1,3 @@
-from . import SimpleImputer
+from . import SimpleImputer, KNNImputer
 
-__all__ = ['SimpleImputer']
+__all__ = ['SimpleImputer', 'KNNImputer']
