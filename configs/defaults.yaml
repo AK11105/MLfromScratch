@@ -5,8 +5,31 @@ shuffle: true
 stratify: false
 
 # Standard Scaler
-scaler:
+standardscaler:
   enabled: true
+
+# Min Max Scaler
+minmaxscaler:
+  enabled: true
+
+# Max Abs Scaler
+maxabsscaler:
+  enabled: true
+
+#Robust Scaler
+robustscaler:
+  enabled: true
+
+#Simple Imputer
+simpleImputer:
+  strategy: "mean"
+  fill_value: None 
+
+#KNN Imputer
+knnimputer:
+  n_neighbors: 5
+  missing_values: np.nan 
+  weights: "uniform"
 
 # Linear Regression
 linear_regression:
