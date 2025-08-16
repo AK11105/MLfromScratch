@@ -23,13 +23,25 @@ robustscaler:
 #Simple Imputer
 simpleImputer:
   strategy: "mean"
-  fill_value: None 
+  fill_value: null
 
 #KNN Imputer
 knnimputer:
   n_neighbors: 5
-  missing_values: np.nan 
+  missing_values: .nan 
   weights: "uniform"
+
+#Label Encoder
+labelencoder:
+  enabled: true
+
+# Ordinal Encoder
+ordinalencoder:
+  categories: "auto"
+  handle_unknown: "error"
+  unknown_value: null
+  encoded_missing_value: .nan
+
 
 # Linear Regression
 linear_regression:

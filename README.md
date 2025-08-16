@@ -51,6 +51,9 @@ More models coming soon!
 - **Imputers:**
   - SimpleImputer
   - KNNImputer
+- **Encoders:**
+  - LabelEncoder
+  - OrdinalEncoder
 
 ## Datasets
 
