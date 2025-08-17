@@ -100,3 +100,8 @@ rnn_classifier:
 #RNN Regressor
 rnn_regressor:
   radius: 1.0
+
+#PCA
+
+pca:
+  n_components: null

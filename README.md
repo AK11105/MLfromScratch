@@ -38,6 +38,8 @@ MLfromScratch/
   - KNN Regressor
   - RNN Classifier
   - RNN Regressor
+- **Decomposition**
+  - PCA
 
 More models coming soon!
 
@@ -73,6 +75,6 @@ python -m test..
 
 **Examples:**
 ```bash
-python -m test.linear_models.LinearRegression
-python -m test.neighbors.KNNClassifier
+python -m test.linear_models.test_linear_regression
+python -m test.neighbors.knn_classifier
 ```
